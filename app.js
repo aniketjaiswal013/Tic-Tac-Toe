@@ -18,33 +18,41 @@ const winPatterns=[
 
 boxes.forEach((box)=>{
     box.addEventListener("click",()=>{
-       draw++; 
+      
        if(turn0){
+        box.style.color="#73605B";
+        box.style.backgroundColor="#330000";
         box.innerHTML="O";
         turn0=false;
        }
        else{
+        box.style.color="black";
+        box.style.backgroundColor="white";
         box.innerHTML="X";
         turn0=true;
        }
        box.disabled=true;
        checkWinner();
+       draw++; 
        if(draw === 9){
-       gameDraw()
+       gameDraw(draw);
        }
     });
 });
-const gameDraw=()=>{
-    msg.innerText=`Game was Draw`;
+const gameDraw=(draw)=>{
+    msg.innerText=`Game was Draw `;
     msgContainer.classList.remove("hide");
     disableBtn();
+    draw=0;
 }
 resetBtn.addEventListener("click",()=>{
     boxes.forEach((box)=>{
+        box.style.backgroundColor="#330000";
         box.innerHTML=" ";
         box.disabled=false;
     })
     turn0=true;
+    draw=0;
 })
 const disableBtn=()=>{
     for(let box of boxes){
@@ -71,11 +79,13 @@ const checkWinner=()=>{
 }
 newGameBtn.addEventListener("click",()=>{
     boxes.forEach((box)=>{
+        box.style.backgroundColor="#330000";
         box.innerHTML=" ";
         box.disabled=false;
     })
     msgContainer.classList.add("hide");
     turn0=true;
+    draw=0;
 })
 
  
