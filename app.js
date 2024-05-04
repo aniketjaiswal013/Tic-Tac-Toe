@@ -3,6 +3,7 @@ let resetBtn=document.querySelector("#reset-btn");
 let newGameBtn=document.querySelector("#new-btn");
 let msgContainer=document.querySelector(".msg-container");
 let msg=document.querySelector("#msg");
+let draw=0;
 let turn0=true;//playerX,player0
 const winPatterns=[
     [0,1,2],
@@ -17,6 +18,7 @@ const winPatterns=[
 
 boxes.forEach((box)=>{
     box.addEventListener("click",()=>{
+       draw++; 
        if(turn0){
         box.innerHTML="O";
         turn0=false;
@@ -27,8 +29,16 @@ boxes.forEach((box)=>{
        }
        box.disabled=true;
        checkWinner();
+       if(draw === 9){
+       gameDraw()
+       }
     });
 });
+const gameDraw=()=>{
+    msg.innerText=`Game was Draw`;
+    msgContainer.classList.remove("hide");
+    disableBtn();
+}
 resetBtn.addEventListener("click",()=>{
     boxes.forEach((box)=>{
         box.innerHTML=" ";
