@@ -18,28 +18,30 @@ const winPatterns=[
 
 boxes.forEach((box)=>{
     box.addEventListener("click",()=>{
-      
+
        if(turn0){
         box.style.color="#73605B";
         box.style.backgroundColor="#330000";
         box.innerHTML="O";
         turn0=false;
+        draw++; 
        }
        else{
         box.style.color="black";
         box.style.backgroundColor="white";
         box.innerHTML="X";
         turn0=true;
+        draw++; 
        }
        box.disabled=true;
        checkWinner();
-       draw++; 
        if(draw === 9){
-       gameDraw(draw);
-       }
+        gameDraw();
+    }
+     
     });
 });
-const gameDraw=(draw)=>{
+const gameDraw=()=>{
     msg.innerText=`Game was Draw `;
     msgContainer.classList.remove("hide");
     disableBtn();
@@ -62,6 +64,7 @@ const disableBtn=()=>{
 const showWinner=(winner)=>{
     msg.innerText=`Congratulation, Winner is ${winner}`;
     msgContainer.classList.remove("hide");
+    draw=0;
     disableBtn();
 
 }
@@ -72,10 +75,12 @@ const checkWinner=()=>{
         let posVal3=boxes[pattern[2]].innerText;
         if(posVal1!=""  &&  posVal2!=""  &&  posVal3!=""){
             if(posVal1 === posVal2 &&posVal2 === posVal3){
-               showWinner(posVal1);
+              showWinner(posVal1);
             }
+           
         }
     }
+   
 }
 newGameBtn.addEventListener("click",()=>{
     boxes.forEach((box)=>{
