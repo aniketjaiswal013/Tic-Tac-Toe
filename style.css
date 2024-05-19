@@ -24,7 +24,7 @@ body{
 }
 .box{
     background-color: #330000;
-    color: #73605B;
+    color: #FFFFFF;
     height: 18vmin;
     width: 18vmin;
     border-radius: 15%;
@@ -33,12 +33,13 @@ body{
     font-size: 12vmin;
   
 }
+
 #reset-btn{
     height: 50px;
     width: 90px;
     font-size: 3.5vmin;
-    background-color: #73605B;
-    color: #330000;
+    background-color:#ffffff;
+    color: black;
     border-radius:12% ;
     border: none;
     box-shadow: 0 0 1rem rgba(0,0,0,0.4);

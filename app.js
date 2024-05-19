@@ -1,3 +1,4 @@
+var button = document.querySelector("button");
 let boxes=document.querySelectorAll(".box");
 let resetBtn=document.querySelector("#reset-btn");
 let newGameBtn=document.querySelector("#new-btn");
@@ -18,9 +19,13 @@ const winPatterns=[
 
 boxes.forEach((box)=>{
     box.addEventListener("click",()=>{
+      box.style.backgroundColor="#550000";
+      box.style.boxShadow="0 6px 8px rgba(0, 0, 0, 0.2)";
+      setTimeout(()=>{
 
+    
        if(turn0){
-        box.style.color="#73605B";
+        box.style.color="#FFFFFF";
         box.style.backgroundColor="#330000";
         box.innerHTML="O";
         turn0=false;
@@ -33,11 +38,13 @@ boxes.forEach((box)=>{
         turn0=true;
         draw++; 
        }
+   
        box.disabled=true;
        checkWinner();
        if(draw === 9){
         gameDraw();
     }
+},100);
      
     });
 });
@@ -48,6 +55,11 @@ const gameDraw=()=>{
     draw=0;
 }
 resetBtn.addEventListener("click",()=>{
+    resetBtn.style.backgroundColor="#e0e0e0";
+    resetBtn.style.boxShadow="0 2px 4px rgba(0, 0, 0, 0.2)";
+    setTimeout(()=>{
+        resetBtn.style.backgroundColor="#ffffff";
+    },100);
     boxes.forEach((box)=>{
         box.style.backgroundColor="#330000";
         box.innerHTML=" ";
@@ -92,5 +104,6 @@ newGameBtn.addEventListener("click",()=>{
     turn0=true;
     draw=0;
 })
+
 
  
